@@ -4,256 +4,341 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slow Thinking Academy — 構想</title>
-
+<style>
+  /* ============================================
+     Slow Thinking Academy — Inlined Stylesheet
+     旧 _styles.css を完全移植し、自己完結型に統合
+     ============================================ */
+  :root {
+    --bg: #f7f5f0;
+    --bg-card: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --ink-mute: #8a8a8a;
+    --accent: #8b6f47;
+    --accent-soft: #c8b8a0;
+    --line: #e0dcd5;
+    --line-soft: #ece8e0;
+    --highlight: #f0e6d6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.9;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 32px; }
+  /* ===== Header ===== */
+  .site-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 32px; border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .site-header .logo {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 13px; letter-spacing: 0.35em;
+    color: var(--ink); text-decoration: none;
+  }
+  .site-header .nav { display: flex; gap: 24px; }
+  .site-header .nav a {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11px; letter-spacing: 0.25em;
+    color: var(--ink-mute); text-decoration: none;
+    text-transform: uppercase;
+  }
+  .site-header .nav a:hover { color: var(--accent); }
+  /* ===== Hero ===== */
+  .hero { padding: 80px 32px 64px; text-align: left; border-bottom: 1px solid var(--line); }
+  .hero .tag {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11px; letter-spacing: 0.35em;
+    color: var(--ink-mute); margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 42px; line-height: 1.4; font-weight: 600;
+    color: var(--ink); margin-bottom: 32px;
+  }
+  .hero .subtitle { font-size: 17px; color: var(--ink-soft); max-width: 640px; line-height: 2.0; }
+  /* ===== Sections ===== */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: none; }
+  .section-number {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11px; letter-spacing: 0.35em;
+    color: var(--ink-mute); margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 28px; font-weight: 600; color: var(--ink);
+    margin-bottom: 32px; line-height: 1.5;
+  }
+  h3 {
+    font-size: 19px; font-weight: 600; color: var(--ink);
+    margin: 32px 0 12px;
+  }
+  p { margin-bottom: 16px; color: var(--ink-soft); }
+  ul, ol { margin: 16px 0 24px 24px; color: var(--ink-soft); }
+  li { margin-bottom: 8px; line-height: 1.9; }
+  /* ===== Quote Block ===== */
+  .quote {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px; margin: 24px 0;
+    font-style: italic; color: var(--ink-soft);
+  }
+  /* ===== Concept Diagram ===== */
+  .concept-diagram {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    margin: 32px 0; padding: 24px;
+    background: var(--bg-card); border: 1px solid var(--line);
+  }
+  .concept-diagram .node {
+    padding: 16px; text-align: center;
+    background: var(--bg); border: 1px solid var(--line);
+    font-size: 14px; color: var(--ink-soft);
+  }
+  /* ===== Principles ===== */
+  .principles {
+    counter-reset: principle;
+    list-style: none; margin: 24px 0; padding: 0;
+  }
+  .principles li {
+    counter-increment: principle;
+    padding: 16px 0 16px 56px;
+    border-bottom: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .principles li::before {
+    content: counter(principle, decimal-leading-zero);
+    position: absolute; left: 0; top: 18px;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 13px; color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+  /* ===== Group Index ===== */
+  .group-index-title {
+    font-size: 22px; font-weight: 600;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .group-index-lead {
+    font-size: 14px; color: var(--ink-mute);
+    margin-bottom: 32px; line-height: 1.8;
+  }
+  .group-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin-top: 24px;
+  }
+  .group-card {
+    display: block; padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    text-decoration: none; color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .group-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .group-card .group-num {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11px; letter-spacing: 0.3em;
+    color: var(--ink-mute); margin-bottom: 8px;
+  }
+  .group-card .group-name {
+    font-size: 18px; font-weight: 600;
+    color: var(--ink); margin-bottom: 8px; line-height: 1.5;
+  }
+  .group-card .group-desc {
+    font-size: 13px; color: var(--ink-soft);
+    line-height: 1.7; margin-bottom: 12px;
+  }
+  .group-card .group-count {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--accent);
+  }
+  /* ===== Footer ===== */
+  footer {
+    padding: 48px 32px; text-align: center;
+    color: var(--ink-mute); font-size: 12px;
+    border-top: 1px solid var(--line);
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    letter-spacing: 0.2em;
+  }
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .container { padding: 32px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 30px; }
+    h2 { font-size: 22px; }
+    .group-grid { grid-template-columns: 1fr; }
+    .concept-diagram { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
 <header class="site-header">
-  <a class="site-title" href="index.html">Slow Thinking Academy</a>
-  <a class="site-nav" href="groups/life-lab.html">GROUPS →</a>
+  <a href="index.html" class="logo">SLOW THINKING ACADEMY</a>
+  <nav class="nav">
+    <a href="#group-index">GROUPS</a>
+  </nav>
 </header>
 
-<div class="wrap">
+<section class="hero">
+  <div class="tag">構想 / MANIFESTO</div>
+  <h1>Slow Thinking Academy</h1>
+  <p class="subtitle">
+    知的好奇心を羅針盤に、<br>
+    世界を広く、深く見つめ、<br>
+    考えたことを人生の形にする。
+  </p>
+</section>
 
-  <section class="hero">
-    <span class="tag">構想 / MANIFESTO</span>
-    <h1 class="page-title">Slow Thinking Academy</h1>
+<div class="container">
 
-    <div class="lead">
-      <p>知的好奇心を羅針盤に、</p>
-      <p>世界を広く、深く見つめ、</p>
-      <p>考えたことを人生の形にする。</p>
-    </div>
-  </section>
+<section>
+  <div class="section-number">01 — はじめに</div>
+  <h2>この構想の始まり</h2>
+  <p>最近、自分の人生について、少しずつ考えが明確になってきました。</p>
+  <p>私は、<strong>知的好奇心を羅針盤</strong>にして、世界を広く、深く見つめたい。</p>
+  <p>経済、国際情勢、AI、アート、投資、歴史、哲学。</p>
+  <p>一見すると、それぞれ異なる分野に見えます。しかし、私にとってはすべて、</p>
+  <ul>
+    <li>「世界をどう見るのか」</li>
+    <li>「なぜ、そうなっているのか」</li>
+    <li>「これから何が起こるのか」</li>
+    <li>「自分はどう考えるのか」</li>
+  </ul>
+  <p>という問いにつながっています。</p>
+</section>
 
-  <section>
-    <div class="chapter-num">01 — はじめに</div>
-    <h2>この構想の始まり</h2>
+<section>
+  <div class="section-number">02 — まだ完成していないこと</div>
+  <h2>完成形ではなく、過程そのものが学び</h2>
+  <p>Slow Thinking Academy には、まだ具体的なカリキュラムや完成した事業があるわけではありません。</p>
+  <p>しかし、方向性は見えてきました。知識を一方的に教える場所ではなく、</p>
+  <div class="quote">
+    自分で問いを持つ<br>
+    世界を広く見る<br>
+    物事を深く考える<br>
+    異なる分野をつなげる<br>
+    自分の考えを言葉にする<br>
+    他者と対話する<br>
+    考えたことを人生の形にする
+  </div>
+  <p>そんなことを学ぶ場所です。</p>
+</section>
 
-    <p>最近、自分の人生について、少しずつ考えが明確になってきました。</p>
+<section>
+  <div class="section-number">03 — AI時代における「学ぶ」</div>
+  <h2>問いを立てる力、そして生きる力</h2>
+  <p>AI によって、知識を得ることはますます簡単になっていく。</p>
+  <p>だからこそ、これから重要になるのは、「何を知っているか」だけではなく、<strong>「何を問い、どう考え、どう生きるのか」</strong>ではないかと思っています。</p>
+  <div class="concept-diagram">
+    <div class="node">問いを持つ</div>
+    <div class="node">世界を見る</div>
+    <div class="node">深く考える</div>
+    <div class="node">分野をつなぐ</div>
+    <div class="node">言葉にする</div>
+    <div class="node">対話する</div>
+    <div class="node">人生にする</div>
+    <div class="node">問いを発つ</div>
+  </div>
+</section>
 
-    <p>私は、<strong>知的好奇心を羅針盤</strong>にして、世界を広く、深く見つめたい。</p>
+<section>
+  <div class="section-number">04 — 4つの場</div>
+  <h2>異なる問いのための、4つの Slow Thinking グループ</h2>
+  <p>すべての問いは、ひとつのかたちで成り立つわけではない。だから、異なる性格を持つ 4 つの場を立ち上げる。</p>
+  <ul class="principles">
+    <li><strong>Slow thinking life lab</strong> ─ 人生と社会を「一つの問い」からゆっくり考える会</li>
+    <li><strong>Slow thinking club</strong> ─ 世界をゆっくり読む会</li>
+    <li><strong>Slow thinking art salon</strong> ─ ゆっくり思索するアートの集い</li>
+    <li><strong>Slow thinking investment lab</strong> ─ 企業と市場を「ゆっくり深く」読む投資研究会</li>
+  </ul>
+</section>
 
-    <p>経済、国際情勢、AI、アート、投資、歴史、哲学。</p>
+<section>
+  <div class="section-number">05 — 学びの7原則</div>
+  <h2>Slow Thinking Academy が大事にする 7 つのこと</h2>
+  <ol class="principles">
+    <li>自分で問いを持つ</li>
+    <li>世界を広く見る</li>
+    <li>物事を深く考える</li>
+    <li>異なる分野をつなげる</li>
+    <li>自分の考えを言葉にする</li>
+    <li>他者と対話する</li>
+    <li>考えたことを人生の形にする</li>
+  </ol>
+</section>
 
-    <p>一見すると、それぞれ異なる分野に見えます。</p>
+<section>
+  <div class="section-number">06 — 軌跡の蓄積</div>
+  <h2>小さな対話の記録が、やがて体系になる</h2>
+  <p>現在運営している「Slow thinking club」も、この構想の一部です。まずは、問いを共有し、対話し、考える人たちが集まる場所を少しずつ育てていく。</p>
+  <p>そして、そこから得られた問いや対話を、少しずつ体系化していく。</p>
+</section>
 
-    <p>しかし、私にとってはすべて、</p>
+<section>
+  <div class="section-number">07 — 軌跡そのものを学びに</div>
+  <h2>教えるのではなく、見せる</h2>
+  <p>私自身も、まだ学びの途中です。だからこそ、完成した答えを教えるのではなく、自分自身が知的好奇心を羅針盤に世界を見つめ、考え、実践していく姿そのものを、ひとつの学びの形にしていきたいと思っています。</p>
+</section>
 
-    <div class="quote-block">
-      世界をどう見るのか<br>
-      なぜ、そうなっているのか<br>
-      これから何が起こるのか<br>
-      自分はどう考えるのか
-    </div>
+<section id="group-index">
+  <div class="section-number">08 — LinkedIn からの軌跡（目次）</div>
+  <h2 class="group-index-title">投稿を、グループ別ページから読む</h2>
+  <p class="group-index-lead">
+    LinkedIn に書き留めてきた問いと考察を、4 つのグループ別に整理しました。<br>
+    各グループページから個別の記事へジャンプできます。
+  </p>
 
-    <p>という問いにつながっています。</p>
+  <div class="group-grid">
+    <a href="groups/life-lab.html" class="group-card">
+      <div class="group-num">GROUP 01</div>
+      <div class="group-name">Slow thinking life lab</div>
+      <div class="group-desc">人生と社会を「一つの問い」からゆっくり考える会</div>
+      <div class="group-count">ENTRIES — 2</div>
+    </a>
+    <a href="groups/club.html" class="group-card">
+      <div class="group-num">GROUP 02</div>
+      <div class="group-name">Slow thinking club</div>
+      <div class="group-desc">世界をゆっくり読む会</div>
+      <div class="group-count">PREPARING</div>
+    </a>
+    <a href="groups/art-salon.html" class="group-card">
+      <div class="group-num">GROUP 03</div>
+      <div class="group-name">Slow thinking art salon</div>
+      <div class="group-desc">ゆっくり思索するアートの集い</div>
+      <div class="group-count">PREPARING</div>
+    </a>
+    <a href="groups/investment-lab.html" class="group-card">
+      <div class="group-num">GROUP 04</div>
+      <div class="group-name">Slow thinking investment lab</div>
+      <div class="group-desc">企業と市場を「ゆっくり深く」読む投資研究会</div>
+      <div class="group-count">PREPARING</div>
+    </a>
+  </div>
+</section>
 
-    <p>そして、考えたことを、単なる知識で終わらせたくありません。</p>
-
-    <div class="quote-block">
-      仕事にする。<br>
-      事業にする。<br>
-      発信する。<br>
-      人と対話する。<br>
-      コミュニティをつくる。<br><br>
-      そして、自分の人生そのものの形にしていく。
-    </div>
-
-    <p>私は、この考え方を、将来的に<strong>教育という形</strong>にしていきたいと思っています。</p>
-
-    <p>それが、</p>
-
-    <div class="quote-block with-margin">
-      「Slow Thinking Academy」<br>
-      という構想です。
-    </div>
-  </section>
-
-  <section>
-    <div class="chapter-num">02 — この構想の性質</div>
-    <h2>まだ完成していないこと</h2>
-
-    <p>まだ、具体的なカリキュラムや完成した事業があるわけではありません。</p>
-
-    <p>しかし、方向性は見えてきました。</p>
-
-    <p>この構想は、<strong>完成した答えを教える場</strong>ではありません。</p>
-
-    <p>私自身も、まだ学びの途中です。</p>
-
-    <p>だからこそ、自分自身が知的好奇心を羅針盤に世界を見つめ、考え、実践していく姿そのものを、<strong>ひとつの学びの形</strong>にしていきたいと思っています。</p>
-  </section>
-
-  <section>
-    <div class="chapter-num">03 — 構想の柱</div>
-    <h2>この場で育まれる七つの力</h2>
-
-    <p>知識を一方向に教える場所ではなく、次のようなことを学ぶ場所です。</p>
-
-    <ul class="principles">
-      <li><span class="num">01</span><span class="text">自分で問いを持つ</span></li>
-      <li><span class="num">02</span><span class="text">世界を広く見る</span></li>
-      <li><span class="num">03</span><span class="text">物事を深く考える</span></li>
-      <li><span class="num">04</span><span class="text">異なる分野をつなげる</span></li>
-      <li><span class="num">05</span><span class="text">自分の考えを言葉にする</span></li>
-      <li><span class="num">06</span><span class="text">他者と対話する</span></li>
-      <li><span class="num">07</span><span class="text">考えたことを人生の形にする</span></li>
-    </ul>
-  </section>
-
-  <section>
-    <div class="chapter-num">04 — なぜ「今」なのか</div>
-    <h2>AI時代の「学び」</h2>
-
-    <p>AIによって、知識を得ることはますます簡単になっていく。</p>
-
-    <p>だからこそ、これから重要になるのは、<strong>「何を知っているか」だけではなく、「何を問い、どう考え、どう生きるのか」</strong>ではないかと思っています。</p>
-
-    <div class="concept">
-      <div class="concept-item">
-        <div class="concept-jp">答えを得る</div>
-        <div class="concept-arrow">→</div>
-        <div class="concept-jp">問いを立てる</div>
-        <div class="concept-desc">良い問いを持つ力こそが、最も稀缺性のある能力になる。</div>
-      </div>
-      <div class="concept-item">
-        <div class="concept-jp">知る</div>
-        <div class="concept-arrow">→</div>
-        <div class="concept-jp">つながる</div>
-        <div class="concept-desc">分野横断の回路を持つこと。専門分野を横断する知の結合。</div>
-      </div>
-      <div class="concept-item">
-        <div class="concept-jp">一人で考える</div>
-        <div class="concept-arrow">→</div>
-        <div class="concept-jp">対話で考える</div>
-        <div class="concept-desc">異なる人生背景を持つ人間同士の対話でしか生まれない気づきがある。</div>
-      </div>
-      <div class="concept-item">
-        <div class="concept-jp">知識</div>
-        <div class="concept-arrow">→</div>
-        <div class="concept-jp">生き方</div>
-        <div class="concept-desc">学ぶことは、人生そのものと切り離せないものになる。</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="chapter-num">05 — 現在の姿</div>
-    <h2>Slow Thinking Club のはじまり</h2>
-
-    <p>現在運営している「Slow Thinking Club」も、この構想の一部です。</p>
-
-    <p>まずは、<strong>問いを共有し、対話し、考える人たちが集まる場所</strong>を、少しずつ育てていく。</p>
-
-    <p>そして、そこから得られた問いや対話を、少しずつ体系化していく。</p>
-  </section>
-
-  <section>
-    <div class="chapter-num">06 — 未来の姿</div>
-    <h2>最終的に目指す場所</h2>
-
-    <p>いつか、</p>
-
-    <div class="quote-block with-margin">
-      「自分で考え、<br>
-      自分の人生をつくっていく人」<br>
-      が集まり、学び、対話できる場所をつくりたい。
-    </div>
-  </section>
-
-  <section>
-    <div class="chapter-num">07 — 歩みの姿勢</div>
-    <h2>軌跡そのものを学びに</h2>
-
-    <p>この構想を、少しずつ育てていくための姿勢を、次のように定めます。</p>
-
-    <div class="concept">
-      <div class="concept-item">
-        <div class="concept-desc">完成された答えではなく、<strong>生きた軌跡を公開する</strong>。</div>
-      </div>
-      <div class="concept-item">
-        <div class="concept-desc">設計図の完成より、<strong>対話と実践の継続</strong>を優先する。</div>
-      </div>
-      <div class="concept-item">
-        <div class="concept-desc">同じことを続けるのではなく、<strong>同じことをより深く、正直に</strong>行う。</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8 — LinkedInからの軌跡 -->
-  <section id="group-index">
-    <div class="chapter-num">08 — LinkedInからの軌跡</div>
-    <h2>実際に歩いた言葉たち ─ 目次</h2>
-
-    <p>構想を言葉にした後、思考の言葉たちは少しずつ対話の外へと出ていきました。ニュースや社会の動きを見ながら、自分の違和感を言葉にする──LinkedInの4つのグループに書き残した軌跡を、それぞれ整理しています。</p>
-
-    <p>各グループをクリックすると、その軌跡の一覧ページへ移動します。</p>
-
-    <nav class="group-index-grid">
-
-      <a class="group-card" href="groups/life-lab.html">
-        <div class="group-card-num">GROUP ①</div>
-        <div class="group-card-title">Slow thinking life lab</div>
-        <div class="group-card-subtitle">人生と社会を「一つの問い」からゆっくり考える会</div>
-        <div class="group-card-meta">2 ENTRIES</div>
-        <div class="group-card-link">OPEN GROUP →</div>
-      </a>
-
-      <a class="group-card" href="groups/club.html">
-        <div class="group-card-num">GROUP ②</div>
-        <div class="group-card-title">Slow thinking club</div>
-        <div class="group-card-subtitle">世界をゆっくり読む会</div>
-        <div class="group-card-meta">PREPARING</div>
-        <div class="group-card-link">OPEN GROUP →</div>
-      </a>
-
-      <a class="group-card" href="groups/art-salon.html">
-        <div class="group-card-num">GROUP ③</div>
-        <div class="group-card-title">Slow thinking art salon</div>
-        <div class="group-card-subtitle">ゆっくり思索するアートの集い</div>
-        <div class="group-card-meta">PREPARING</div>
-        <div class="group-card-link">OPEN GROUP →</div>
-      </a>
-
-      <a class="group-card" href="groups/investment-lab.html">
-        <div class="group-card-num">GROUP ④</div>
-        <div class="group-card-title">Slow thinking investment lab</div>
-        <div class="group-card-subtitle">企業と市場を「ゆっくり深く」読む投資研究会</div>
-        <div class="group-card-meta">PREPARING</div>
-        <div class="group-card-link">OPEN GROUP →</div>
-      </a>
-
-    </nav>
-
-    <p class="group-note">※ 各記事は独立したページとして公開されます。記事が届き次第、それぞれのグループに時系列で追加されていきます。</p>
-  </section>
-
-  <section>
-    <div class="chapter-num">09 — 招待</div>
-
-    <div class="quote-block with-margin">
-      知的好奇心を羅針盤に、<br>
-      世界を広く、深く見つめる。<br><br>
-      そして、考えたことを人生の形にする。
-    </div>
-
-    <footer>
-      <div class="actions">
-        <div class="actions-title">FIRST STEPS — 最初の一歩</div>
-        <ol>
-          <li>週に1つ、自分がいちばん違和感を持ったことから問いを書き残す。</li>
-          <li>対話の場（Slow Thinking Club）に参加する。</li>
-          <li>自分の考えの軌跡を、少しずつ発信する。</li>
-        </ol>
-      </div>
-
-      <div class="invite">あなたも、この歩みに加わりませんか。</div>
-      <div class="signature">Slow Thinking Academy</div>
-    </footer>
-  </section>
+<section>
+  <div class="section-number">09 — おわりに</div>
+  <h2>この構想を、少しずつ育てていく</h2>
+  <div class="quote">
+    「自分で考え、自分の人生をつくっていく人」が集まり、学び、対話できる場所。
+  </div>
+  <p>いつか、それをつくりたい。それが、私の構想する <strong>Slow Thinking Academy</strong> です。</p>
+</section>
 
 </div>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+
+<footer>
+  SLOW THINKING ACADEMY — A LIVING MANIFESTO
+</footer>
+
 </body>
 </html>
