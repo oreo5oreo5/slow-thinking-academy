@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GROUP ② Slow thinking club — Slow Thinking Academy</title>
+<style>
+:root{--bg:#f7f5f0;--ink:#1f1d18;--ink-soft:#4a463d;--ink-mute:#8a8478;--line:#d9d3c4;--accent:#6b5d3f;--accent-soft:#a89473;--quote:#efe9dc;--card:#fbf9f3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Songti SC",serif;line-height:2.05;font-size:17px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:80px 40px 160px}
+.site-header{display:flex;justify-content:space-between;align-items:baseline;padding:32px 40px;border-bottom:1px solid var(--line);background:rgba(247,245,240,0.85)}
+.site-header .site-title{font-size:16px;letter-spacing:0.06em;color:var(--ink);text-decoration:none}
+.site-header .site-nav{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-decoration:none}
+.site-header .site-nav:hover{color:var(--ink)}
+
+.crumbs{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.15em;color:var(--ink-mute);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--line);display:flex;align-items:center;flex-wrap:wrap;gap:8px;text-transform:uppercase}
+.crumbs a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.crumbs a:hover{border-bottom-color:var(--accent)}
+.crumbs .sep{color:var(--line)}
+.crumbs .current{color:var(--ink)}
+
+.hero{padding-top:40px;padding-bottom:64px}
+.group-hero-label{font-family:"Helvetica Neue",sans-serif;font-size:13px;letter-spacing:0.3em;color:var(--accent);margin-bottom:12px}
+.group-hero-fullname{font-size:13px;color:var(--ink-mute);margin-bottom:28px;line-height:1.7;letter-spacing:0.02em}
+h1.page-title{font-size:44px;font-weight:500;letter-spacing:0.04em;line-height:1.5;margin-bottom:32px;color:var(--ink)}
+.lead{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 0;margin-top:24px}
+.lead p{font-size:18px;line-height:2.1;color:var(--ink-soft);margin-bottom:0}
+
+section{padding-top:80px;scroll-margin-top:40px}
+.chapter-num{font-family:"Helvetica Neue",sans-serif;font-size:13px;letter-spacing:0.3em;color:var(--ink-mute);margin-bottom:20px}
+h2{font-size:26px;font-weight:500;line-height:1.7;margin-bottom:40px;color:var(--ink);letter-spacing:0.02em}
+p{margin-bottom:24px;color:var(--ink-soft)}
+p strong{color:var(--ink);font-weight:500}
+
+/* 準備中カード（index のパターンに合わせた質感） */
+.preparing-card{background:var(--card);border:1px dashed var(--line);padding:56px 40px;text-align:center;margin-top:32px;position:relative}
+.preparing-badge{display:inline-block;font-family:"Helvetica Neue",sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;padding:6px 16px;border:1px solid var(--accent)}
+.preparing-title{font-size:20px;font-weight:500;color:var(--ink);margin-bottom:16px;letter-spacing:0.02em}
+.preparing-desc{font-size:14px;color:var(--ink-mute);line-height:2;max-width:480px;margin:0 auto}
+.preparing-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:32px auto 0;max-width:200px}
+.preparing-divider span{height:1px;flex:1;background:var(--line)}
+.preparing-divider em{font-family:"Helvetica Neue",sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--accent);font-style:normal}
+
+.group-note{font-size:13px;color:var(--ink-mute);line-height:1.9;padding:16px 20px;background:rgba(107,93,63,0.04);border-left:2px solid var(--accent);margin-top:40px}
+
+footer{margin-top:120px;padding-top:56px;border-top:1px solid var(--line);text-align:center}
+.footer-cta{font-size:18px;line-height:2;color:var(--ink);margin-bottom:24px}
+.footer-back{display:inline-block;font-family:"Helvetica Neue",sans-serif;font-size:11px;letter-spacing:0.25em;color:var(--accent);text-decoration:none;padding:14px 28px;border:1px solid var(--accent);transition:background 0.2s ease,color 0.2s ease}
+.footer-back:hover{background:var(--accent);color:var(--bg)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:60px 24px 120px}
+  .site-header{padding:24px;flex-direction:column;align-items:flex-start;gap:12px}
+  h1.page-title{font-size:30px}
+  h2{font-size:21px}
+  .lead p{font-size:16px}
+  section{padding-top:56px}
+  .preparing-card{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="site-title" href="../index.html">Slow Thinking Academy</a>
+  <a class="site-nav" href="../index.html#group-index">← 目次へ</a>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="crumbs">
+      <a href="../index.html">Top</a>
+      <span class="sep">›</span>
+      <span class="current">Group ② Slow thinking club</span>
+    </div>
+
+    <div class="group-hero-label">GROUP ②</div>
+    <div class="group-hero-fullname">Slow thinking club ─ 世界をゆっくり読む会</div>
+
+    <h1 class="page-title">Slow thinking club</h1>
+
+    <div class="lead">
+      <p>国際情勢、社会の動き、構造的な変化。<br>
+      世界の動きを「ゆっくり読み解く」ための軌跡を蓄積していく場。</p>
+    </div>
+
+    <p>ニュースや時事問題を、潮流としてではなく、<strong>構造として</strong>読み解く。<br>
+    一つの出来事を入口に、その背景・力学・これからを、ゆっくり言葉にしていきます。</p>
+  </section>
+
+  <section>
+    <div class="chapter-num">ENTRIES</div>
+    <h2>このページの記事</h2>
+
+    <div class="preparing-card">
+      <span class="preparing-badge">Preparing</span>
+      <div class="preparing-title">最初の軌跡を、準備中です。</div>
+      <p class="preparing-desc">LinkedInに投稿した最初の考察が届き次第、<br>このページに時系列で整理していきます。</p>
+      <div class="preparing-divider"><span></span><em>coming soon</em><span></span></div>
+    </div>
+
+    <div class="group-note">※ このグループは「世界をゆっくり読む」ための専用スペースです。時事的な考察を、ここに静かに蓄積していきます。</div>
+  </section>
+
+  <footer>
+    <div class="footer-cta">その他のグループも、ゆっくり育っています。</div>
+    <a class="footer-back" href="../index.html#group-index">← 目次ページに戻る</a>
+  </footer>
+
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
