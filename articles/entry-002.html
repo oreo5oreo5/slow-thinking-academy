@@ -4,7 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ENTRY 002 — 15分間を取り戻す — Slow Thinking Academy</title>
-<link rel="stylesheet" href="../_styles.css">
+<style>
+:root{--bg:#f7f5f0;--ink:#1f1d18;--ink-soft:#4a463d;--ink-mute:#8a8478;--line:#d9d3c4;--accent:#6b5d3f;--accent-soft:#a89473;--quote:#efe9dc;--card:#fbf9f3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Songti SC",serif;line-height:2.05;font-size:17px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:80px 40px 160px}
+.site-header{display:flex;justify-content:space-between;align-items:baseline;padding:32px 40px;border-bottom:1px solid var(--line);background:rgba(247,245,240,0.85)}
+.site-header .site-title{font-size:16px;letter-spacing:0.06em;color:var(--ink);text-decoration:none}
+.site-header .site-nav{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-decoration:none}
+.site-header .site-nav:hover{color:var(--ink)}
+.crumbs{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.15em;color:var(--ink-mute);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--line);display:flex;align-items:center;flex-wrap:wrap;gap:8px;text-transform:uppercase}
+.crumbs a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.crumbs a:hover{border-bottom-color:var(--accent)}
+.crumbs .sep{color:var(--line)}
+.crumbs .current{color:var(--ink)}
+.hero{padding-top:40px;padding-bottom:64px}
+.post-label{display:inline-block;font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--accent);margin-bottom:12px;text-transform:uppercase}
+.post-meta{display:flex;flex-wrap:wrap;gap:18px;align-items:baseline;margin-bottom:20px;font-size:12px;color:var(--ink-mute);font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;letter-spacing:0.05em;padding-top:14px;border-top:1px solid var(--line)}
+.post-meta > span{display:inline-flex;align-items:center}
+.post-meta > span::before{content:"─";margin-right:8px;color:var(--accent-soft);font-size:10px}
+.post-meta > span:first-child::before{display:none}
+.post-date{font-family:"Helvetica Neue",sans-serif;color:var(--ink-mute);letter-spacing:0.1em}
+.post-source{color:var(--ink-mute);font-size:12px;line-height:1.6}
+h3.post-title{font-size:44px;font-weight:500;letter-spacing:0.04em;line-height:1.5;margin:24px 0 32px;color:var(--ink)}
+.post-body p{margin-bottom:28px;color:var(--ink-soft);font-size:17px;line-height:2.05}
+.post-body p:last-child{margin-bottom:0}
+.post-source-quote{margin:40px 0;padding:28px 32px;background:var(--quote);border-left:2px solid var(--accent);font-size:17px;line-height:2.0;color:var(--ink);font-style:normal}
+.post-source-quote strong{color:var(--ink);font-weight:500;background:rgba(107,93,63,0.08);padding:2px 6px}
+.post-tags{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.post-tags-label{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--ink-mute);text-transform:uppercase;margin-right:8px}
+.post-tags span{font-size:13px;color:var(--accent);letter-spacing:0.05em}
+.post-tags span::before{content:"#";color:var(--accent-soft);margin-right:1px}
+.post-group-note{margin-top:72px;padding:32px 36px;background:rgba(107,93,63,0.04);border-left:2px solid var(--accent);font-size:14.5px;line-height:2.0;color:var(--ink-mute)}
+.post-group-note p{margin-bottom:14px;font-size:14.5px;line-height:2.0;color:var(--ink-mute)}
+.post-group-note p:last-child{margin-bottom:0}
+.post-group-note strong{color:var(--ink-soft);font-weight:500}
+.post-group-link{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--accent)}
+.post-group-link a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);word-break:break-all;transition:opacity 0.2s}
+.post-group-link a:hover{opacity:0.7}
+.article-nav{margin-top:96px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.article-nav a{font-family:"Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;font-size:12px;letter-spacing:0.2em;color:var(--accent);text-decoration:none;padding:12px 20px;border:1px solid var(--line);background:#ffffff;transition:background 0.2s,border-color 0.2s,color 0.2s}
+.article-nav a:hover{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.article-nav .center{margin:0 auto}
+@media (max-width:640px){body{font-size:16px}.wrap{padding:60px 24px 120px}.site-header{padding:24px;flex-direction:column;align-items:flex-start;gap:12px}h3.post-title{font-size:30px!important;margin:20px 0 28px}.hero{padding-bottom:48px}.post-meta{flex-direction:column;gap:8px;align-items:flex-start}.post-source-quote{padding:22px 24px;font-size:16px}.article-nav{flex-direction:column;align-items:stretch}.article-nav .center{margin:0}.article-nav a{text-align:center}}
+</style>
 </head>
 <body>
 
@@ -15,7 +59,7 @@
 
 <div class="wrap">
 
-  <section>
+  <section class="hero">
     <div class="crumbs">
       <a href="../index.html">Top</a>
       <span class="sep">›</span>
@@ -24,14 +68,18 @@
       <span class="current">ENTRY 002</span>
     </div>
 
-    <article class="post">
+    <span class="post-label">ENTRY — 002</span>
 
-      <span class="post-label">ENTRY — 002</span>
-      <div class="post-meta">
-        <span class="post-date">2026.07.28</span>
-        <span class="post-source">『信用資産のつくり方』大森健巳 P7 より引用</span>
-      </div>
-      <h3 class="post-title">15分間を取り戻す ─ アンディ・ウォーホルの言葉を考える</h3>
+    <h3 class="post-title">15分間を取り戻す ─<br>アンディ・ウォーホルの言葉を考える</h3>
+
+    <div class="post-meta">
+      <span class="post-date">2026.07.28</span>
+      <span class="post-source">『信用資産のつくり方』大森健巳 P7 より引用</span>
+    </div>
+  </section>
+
+  <section>
+    <article class="post">
 
       <div class="post-body">
 
@@ -44,43 +92,35 @@
         </div>
 
         <p>このアンディ・ウォーホルの言葉を考えてみたいと思います。</p>
-
         <p>この15分間という時間は何を意味するのでしょうか？</p>
-
         <p>誰もが15分間だけ世界的な有名人になれる時代が来る、私は今に当てはめると15分間ではなく「15秒間」なのではないかと思います。</p>
-
         <p>ショート動画をスクロールする時代に15秒どころか数秒かもしれません。それを考えると、その当時は「15分間」がとても短い時間として認識させられていた、そういうことだと思います。</p>
-
         <p>しかし、今となっては15分間などとても長い時間になります。</p>
-
         <p>そこで私が考えるのはアンディ・ウォーホルの時代には縮小した時間だったかもしれませんが、今は<strong>「15分間を取り戻す」</strong>ことが大事なのではないでしょうか？</p>
-
         <p>15分間が無理であれば5分間でも良いです。その時間を思考することが大事だと思います。</p>
-
         <p>AIにすぐ答えを聞くのではなく、自分で考える。</p>
-
         <p>その先に「誰もが世界的な有名人になれる時代」がくると。</p>
-
         <p>皆さまはAIにいろいろと相談をされていると思いますが、相談する前にまず自分で考えてますでしょうか？</p>
 
-        <div class="post-tags">
-          <span>#アンディウォーホル</span>
-          <span>#言葉</span>
-        </div>
+      </div>
 
-        <div class="post-group-note">
-          <p><strong>⚫ このグループでは、</strong></p>
-          <p>人生や社会について、 「正しい／間違っている」と急いで判断せず、一つの問いを入り口に、 ゆっくり考え続けることを大切にしています。</p>
-          <p>ニュースや社会の出来事を、 ただ消費するのではなく、<br>「なぜ、こうなっているんだろう？」<br>「本当に、これが当たり前なのだろうか？」<br>と、自分自身に問いかけてみる。</p>
-          <p>ふと感じた違和感や、 まだ言葉になりきらない考えを、 すぐに結論へと変えず、 そのまま置いてみる。</p>
-          <p>それが、 このグループで大切にする slow thinking です。</p>
-          <p>答えを急がず、 問いを持ったまま、 人生と社会をゆっくり考えてみたい方。</p>
-          <p><strong>Slow thinking life lab</strong> ─ 人生と社会を「一つの問い」からゆっくり考える会。</p>
-          <p>あなたのペースのまま、 一つの問いの前に、 少しだけ座っていてください。</p>
-          <p class="post-group-link">@WB登記測量事務所<br>
-          <a href="https://lnkd.in/g8nGQUT6" target="_blank">https://lnkd.in/g8nGQUT6</a></p>
-        </div>
+      <div class="post-tags">
+        <span class="post-tags-label">Tags</span>
+        <span>アンディウォーホル</span>
+        <span>言葉</span>
+      </div>
 
+      <div class="post-group-note">
+        <p><strong>⚫ このグループでは、</strong></p>
+        <p>人生や社会について、 「正しい／間違っている」と急いで判断せず、一つの問いを入り口に、 ゆっくり考え続けることを大切にしています。</p>
+        <p>ニュースや社会の出来事を、 ただ消費するのではなく、<br>「なぜ、こうなっているんだろう？」<br>「本当に、これが当たり前なのだろうか？」<br>と、自分自身に問いかけてみる。</p>
+        <p>ふと感じた違和感や、 まだ言葉になりきらない考えを、 すぐに結論へと変えず、 そのまま置いてみる。</p>
+        <p>それが、 このグループで大切にする slow thinking です。</p>
+        <p>答えを急がず、 問いを持ったまま、 人生と社会をゆっくり考えてみたい方。</p>
+        <p><strong>Slow thinking life lab</strong> ─ 人生と社会を「一つの問い」からゆっくり考える会。</p>
+        <p>あなたのペースのまま、 一つの問いの前に、 少しだけ座っていてください。</p>
+        <p class="post-group-link">@WB登記測量事務所<br>
+        <a href="https://lnkd.in/g8nGQUT6" target="_blank">https://lnkd.in/g8nGQUT6</a></p>
       </div>
 
     </article>
